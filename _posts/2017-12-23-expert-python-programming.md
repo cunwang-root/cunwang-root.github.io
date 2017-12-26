@@ -1,5 +1,5 @@
-## Current Status of Python
-### The popular tools and techniques used for maintaining cross-version
+# Current Status of Python
+## The popular tools and techniques used for maintaining cross-version
 compatibility
 
 The best way so far to define how compatibility may change in the future is
@@ -16,10 +16,10 @@ are only major releases because minor and patch releases are guaranteed not
 to include backwards incompatible changes. This is only true if such
 projects can be trusted not to break such a contract.
 
-### Popular productivity tools
+## Popular productivity tools
 
-## Syntax Best Practices - below the Class Level
-### dictionary implementation details
+# Syntax Best Practices - below the Class Level
+## dictionary implementation details
 CPython uses hash tables with pseudo-random probing as an underlying data
 structure for dictionaries. Due to this implementation detail, only objects
 that are hashable can be used as a dictionary key. An object is hashable if it
@@ -30,20 +30,20 @@ Two objects that are compared equal must have the same hash value. The reverse
 does not need to be true. This means collisions of hashes are possible—two
 objects with the same hash may not be equal. 
 
-### Advanced syntax
-#### Iterators
+## Advanced syntax
+### Iterators
 An iterator is nothing more than a container object that implements the
 iterator protocol. It is based on two methods:
 * \_\_next\_\_: This returns the next item of the container
 * \_\_iter\_\_: This returns the iterator itself
 
-#### Generators
+### Generators
 Generators provide an elegant way to write simple and efficient code for
 functions that return a sequence of elements. Based on the yield statement,
 they allow you to pause a function and return an intermediate result. The
 function saves its execution context and can be resumed later, if necessary.
 
-#### Decorators
+### Decorators
 Decorators were added in Python to make function and method wrapping (a
 function that receives a function and returns an enhanced one) easier to
 read and understand. 
@@ -65,30 +65,30 @@ The generic patterns is as follows:
 Common pitfalls of using decorators is not preserving function metadata
 (mostly docstring and original name) when using decorators.
 
-## Syntax Best Practices --- above the Class Level
-### Subclassing built-in types
-### Accessing methods from superclasses
+# Syntax Best Practices --- above the Class Level
+## Subclassing built-in types
+## Accessing methods from superclasses
 The shorter form of super (without passing any arguments) is allowed inside
 the methods but super is not limited to methods. 
 When only the first argument is provided, then super returns an unbounded
 type. This is especially useful when working with classmethod.
-### Old-style classes and super in Python 2
+## Old-style classes and super in Python 2
 Python 3 no longer maintains the concept of old-style classes, so any class
 that does not inherit from any other class implicitly inherits from object. 
-### Understanding Python's Method Resolution Order
+## Understanding Python's Method Resolution Order
 Python's Method Resolution Order is based on *C3*, the MRO built for the Dylan
 programming language.
-### Descriptors
+## Descriptors
 A descriptor lets you customize what should be done when you refer to an
 attribute on an object.
-#### Real-life example – lazily evaluated attributes
+### Real-life example – lazily evaluated attributes
 One example usage of descriptors may be to delay initialization of the class
 attribute to the moment when it is accessed from the instance. 
-#### Properties
+### Properties
 The properties provide a built-in descriptor type that knows how to link an
 attribute to a set of methods. A property takes four optional arguments: fget,
 fset, fdel, and doc. 
-### Metaprogramming
-> Metaprogramming is a technique of writing computer programs that can
+## Metaprogramming
+> "Metaprogramming is a technique of writing computer programs that can
 > treat themselves as data, so you can introspect, generate, and/or modify
-> itself while running.
+> itself while running."
