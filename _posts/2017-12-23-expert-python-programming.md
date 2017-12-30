@@ -115,7 +115,7 @@ The basic type of every class definition is simply the built-in type class.
 In Python, it is possible to substitute the metaclass for a class object
 with our own type.
 
-![implementation of custom metaclasses]({{ site.url }}/assets/metaclasses.png)
+![implementation of custom metaclasses](/assets/metaclasses.png)
 
 Every class created with the class statement implicitly uses type as its
 metaclass. This default behavior can be changed by providing the metaclass
@@ -150,3 +150,4 @@ no underscores.
 When the module is private to the package, a leading underscore is added.
 
 ## 5. Writing a Package
+
