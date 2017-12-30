@@ -112,14 +112,14 @@ objects, then they have an associated class.
 The basic type of every class definition is simply the built-in type class.
 In Python, it is possible to substitute the metaclass for a class object
 with our own type.
-![Usual implementation of custom metaclasses](imgs/metaclasses.png)
+![implementation of custom metaclasses]({{"/assets/metaclasses" | absolute_url }})
 Every class created with the class statement implicitly uses type as its
 metaclass. This default behavior can be changed by providing the metaclass
 keyword argument to the class statement.
-```python
+{% highlight python %}
     class ClassWithAMetaclass(metaclass=type):
         pass
-```
+{% endhighlight %}
 The value provided as a _metaclass_ argument is a metaclass argument is
 usually another class object, but it can be any other callable that accepts
 the same arguments as the _type_ class and is expected to return another
