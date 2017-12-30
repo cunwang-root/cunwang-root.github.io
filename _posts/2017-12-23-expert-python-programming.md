@@ -106,13 +106,17 @@ The only difference is that they are expected to return a class instead of the
 function object. 
 ### Metaclasses
 Metaclass is a type (class) that defines other types (classes). 
+
 The most important thing to know in order to understand how they work is
 that classes that define object instances are objects too. So, if they are
 objects, then they have an associated class. 
+
 The basic type of every class definition is simply the built-in type class.
 In Python, it is possible to substitute the metaclass for a class object
 with our own type.
-![implementation of custom metaclasses]({{"/assets/metaclasses" | absolute_url }})
+
+![implementation of custom metaclasses]({{"/assets/metaclasses.png" | absolute_url }})
+
 Every class created with the class statement implicitly uses type as its
 metaclass. This default behavior can be changed by providing the metaclass
 keyword argument to the class statement.
