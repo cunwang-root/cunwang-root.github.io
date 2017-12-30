@@ -112,7 +112,7 @@ objects, then they have an associated class.
 The basic type of every class definition is simply the built-in type class.
 In Python, it is possible to substitute the metaclass for a class object
 with our own type.
-![Usual implementation of custom metaclasses](./imgs/metaclasses.png)
+![Usual implementation of custom metaclasses](../imgs/metaclasses.png)
 Every class created with the class statement implicitly uses type as its
 metaclass. This default behavior can be changed by providing the metaclass
 keyword argument to the class statement.
@@ -126,12 +126,12 @@ the same arguments as the _type_ class and is expected to return another
 class object. 
 The call signature is `type(name, bases, namespace)`, which is explained as
 follows:
-    *   _name_: This is the name of class that will be stored in the 
+*  _name_: This is the name of class that will be stored in the 
         `__name__` attribute
-    *   _bases_: This is the list of parent classes that will become the
+*  _bases_: This is the list of parent classes that will become the
         `__bases__` attribute and will be used to construct the MRO of a
         newly created class
-    *   _namespace_: 
+*  _namespace_: 
 
 ## 4. Choosing Good Names
 ### Best practices for arguments
