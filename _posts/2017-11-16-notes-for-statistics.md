@@ -74,3 +74,9 @@ The addition rule finds the chance that at least one of two things happens.
 The multiplication  rule finds the chance that two things both happen.  
 
 ### 15. The Binomial Formula
+binomial coefficient  
+
+### 16. The law of Averages
+
+### 17. The Expected Value and Standard Error
+

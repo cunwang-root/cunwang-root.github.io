@@ -150,4 +150,239 @@ no underscores.
 When the module is private to the package, a leading underscore is added.
 
 ## 5. Writing a Package
+The Python Packaging User Guide recommendations of tools for package
+creation and distribution are as follows:
+* Use setuptools to define projects and create source distributions
+* Use wheels in favor of eggs to create built distributions
+* Use twine to upload package distributions to PyPI
+### Project configuration
+
+### Namespace package
+Namespace packages can be understood as a way of grouping related packages
+or modules higher than a meta-package level, where each of these packages
+can be installed independently.
+
+Namespace packages are especially useful if you have your application
+components developed, packaged, and versioned independently but you still
+want to access them from the same namespace. 
+
+It is important to know the difference between normal and namespace packages
+and what problems they solve.
+
+### Uploading a package
+
+### Standalone executables
+
+## 6. Deploying Code
+The process of making a specific version of your application or service
+available to the end users is called deployment.
+
+### The Twelve-Factor App
+A good source of such practices that encourage building easily deployable
+apps is a manifesto called Twelve-Factor App.
+
+As its name says, the Twelve-Factor App consists of 12 rules:
+
+### Deployment automation using Fabric
+
+### Common conventions and practices
+The filesystem hierarchy
+
+What really helps is to document conventions for your project.
+
+Isolation
+
+For the purpose of deployments, there is only one important thing to add.
+You should always isolate project dependencies for each release of your
+application. In practice it means that whenever you deploy a new version of
+the application, you should create a new isolated environment for this
+release.
+
+Using process supervision tools
+
+Applications on remote servers usually are never expected to quit.
+What you need is to have some process supervision tool that can start and
+manage your application process.
+Two popular tools in the Python community for managing application processes
+are Supervisor and Circus.
+
+Application code should be run in user space
+
+Your application code should be always run in user space. This means it must
+not be executed under super-user privileges.
+
+The conventional name for a user that owns no files and is in no privileged
+groups is nobody, anyway the actual recommendation is to create a separate
+user for each application daemon. 
+
+In Linux, processes of the same user can interact with each other, so it is
+important to have different applications separated at the user level.
+
+Using reverse HTTP proxies ?????
+
+Reloading processes gracefully
+
+Graceful reloads are today a standard in deploying web applications. 
+
+Code instrumentation and monitoring
+
+To be sure that our product works as expected, we need to properly handle
+application logs and monitor the necessary application metrics. 
+This often includes:
+* Monitoring web application access logs for various HTTP status codes
+* A collection of process logs that may contain information about runtime
+errors and various warnings
+* Monitoring system resources (CPU load, memory, and network traffic) on
+remote hosts where the application is run
+* Monitoring application-level performance and metrics that are business
+performance indicators (customer acquisition, revenue, and so on)
+
+Logging errors – sentry/raven
+
+No matter how precisely your application is tested, the truth is painful.
+Your code will eventually fail at some point.
+What you can do is be well prepared for such scenarios and make sure that no
+error passes unnoticed. 
+
+You could, of course, depend only on such logs stored in files for finding
+and monitoring your application errors. Unfortunately, observing errors in
+textual logs is quite painful and does not scale well beyond anything more
+complex than running code in development.
+You will eventually be forced to use some services designed for log
+collection and analysis.
+What you really need is as much context information about error occurrence
+as possible.
+
+Monitoring system and application metrics
+
+Dealing with application logs
+
+While solutions such as Sentry are usually way more powerful than ordinary
+textual output stored in files, logs will never die.
+
+Remember that logs are not only about errors. They can be even the core of
+the product implementation.
+
+The Twelve-Factor App says that logs should be treated as event streams. So
+a log file is not a log per se, but only an output format. 
+The fact that they are streams means they represent time ordered events. 
+
+According to the Twelve-Factor App methodology, the application should never
+be aware of the format in which logs are stored. This means that writing to 
+the file, or log rotation and retention should never be maintained by the
+application code. These are the responsibilities of the environment in which
+applications are run.
+
+The best conventions for dealing with logs can be closed in a few rules:
+* The application should always write logs unbuffered to the standard
+output (stdout)
+* The execution environment should be responsible for the collection and
+routing of logs to the final destination
+
+The main part of the mentioned execution environment is usually some kind of
+process supervision tool. 
+
+Both Supervisor and Circus are also capable of handling log rotation and
+retention for managed processes but you should really consider whether this 
+is a path that you want to go. 
+My strong recommendation is to forget about Supervisor's and Circus' log 
+rotation capabilities for the sake of consistency with other system
+services. logrotate is way more configurable and also supports compression.
+
+## 7. Python Extensions in Other Languages
+### Why you might want to use extensions
+Improving performance in critical code sections
+
+Integrating existing code written in different languages
+
+Integrating third-party dynamic libraries
+
+Creating custom datatypes
+
+You can, of course, create many custom data structures in Python either by
+basing them completely on some built-in types or by building them from
+scratch as completely new classes. Unfortunately, for some applications that
+may heavily rely on such custom data structures, the performance might not
+be enough.
+
+### Writing extensions
+Pure C extension
+
+Cython
+
+Cython is both an optimizing static compiler and the name of a programming
+language that is a superset of Python. As a compiler, it can perform source 
+to source compilation of native Python code and its Cython dialect to Python
+C extensions using Python/C API. It allows you to combine the power of
+Python and C without the need to manually deal with Python/C API.
+
+For extensions created using Cython, the major advantage you will get is
+using the superset language that it provides. Anyway, it is possible to
+create extensions from plain Python code using source to source compilation.
+
+Cython sources use a different file extension. It is .pyx instead of .py.
+
+## 8. Managing Code
+### Version control systems
+### Continuous development processes
+There are some processes that can greatly streamline your development and
+reduce a time in getting the application ready to be released or deployed to
+the production environment. It is important to highlight that they
+are strictly technical processes, so they are almost unrelated to project
+management technologies, although they can highly dovetail with the latter.
+
+The fact that these are technical processes means that their implementation
+strictly depends on the usage of proper tools.
+
+Continuous integration
+
+Continuous integration, often abbreviated as CI, is a process that takes
+benefit from automated testing and version control systems to provide a 
+fully automatic integration environment. 
+
+Continuous delivery
+
+Continuous delivery is a simple extension of the continuous integration
+idea. This approach to software engineering aims to ensure that the
+application can be released reliably at any time.
+
+not finished!
+
+## 9. Documenting Your Project
+### The seven rules of technical writing
+* __Write in two steps:__ Focus on ideas and then on reviewing and shaping
+your text.
+* __Target the readership:__ Who is going to read it?
+* __Use a simple style:__ Keep it straight and simple. Use good grammar.
+* __Limit the scope of the information:__ Introduce one concept at a time.
+* __Use realistic code examples:__ "Foos" and "bars" should be avoided
+* __Use a light but sufficient approach:__ You are not writing a book!
+* __Use templates:__ Help the readers to get habits.
+
+### A reStructuredText primer
+reStructuredText is also called reST. It is a plain text markup language
+widely used in the Python community to document packages.
+
+### Building the documentation
+
+Sphinx
+
+## 10. Test-Driven Development
+
+## 11. Optimization – General Principles and Profiling Techniques
+### 11.1 The three rules of optimization
+Make it work first
+
+A very common mistake is to try to optimize the code while you are writing
+it. As Kent Beck says, "Make it work, then make it right, then make it
+fast."
+
+Work from the user's point of view
+
+Remember that optimization has a cost and that the developer's point of view
+is meaningless to customers, unless you are writing a framework or a library
+and the customer is a developer too.
+
+Keep the code readable and maintainable
+
 
