@@ -1,3 +1,7 @@
+---
+layout: post
+categories: [Python]
+---
 ## 1. argparse
 
 ```python
