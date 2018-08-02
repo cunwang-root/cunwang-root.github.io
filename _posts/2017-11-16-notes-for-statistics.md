@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "notes for statistics"
+date:   2017-11-16
+categories: [MATHEMATICS]
+---
+
 Statistics, David Freedman
 ### 1. Controlled Experiments
 method of comparison  

@@ -1,4 +1,8 @@
 ---
+layout: post
+title:  "pgm"
+date:   2017-12-08
+categories: [MACHINELEARNING]
 mathjax: true
 ---
 ## 1. Probability

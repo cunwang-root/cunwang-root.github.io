@@ -2,6 +2,11 @@
 categories: [Deeplearning]
 ---
 
+##TUTORIALS
+2. Image Recognition
+In the example code of this tutorial, it creates a graph from saved GraphDef.
+
+
 ## API
 ```python
 tf.get_default_session()

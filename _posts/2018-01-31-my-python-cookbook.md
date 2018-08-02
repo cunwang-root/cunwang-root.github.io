@@ -1,7 +1,16 @@
 ---
 layout: post
-categories: [Python]
+title:  "my python cookbook"
+date:   2018-01-31
+categories: [LANGUAGES]
+mathjax: true
 ---
+## 0. useful points
+
+* list slicing does not produce index out of bound error
+    Slicing is used to create a new list. If the indices don't fall within the
+    range of the number of elements in the list, we can return an empty list.
+
 ## 1. argparse
 
 ```python
