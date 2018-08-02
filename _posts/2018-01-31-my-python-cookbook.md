@@ -2,7 +2,8 @@
 layout: post
 title:  "my python cookbook"
 date:   2018-01-31
-categories: [LANGUAGES]
+categories: [Languages]
+tags: [python]
 mathjax: true
 ---
 ## 0. useful points

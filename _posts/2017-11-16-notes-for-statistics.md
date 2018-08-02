@@ -2,7 +2,7 @@
 layout: post
 title:  "notes for statistics"
 date:   2017-11-16
-categories: [MATHEMATICS]
+categories: [Mathematics]
 ---
 
 Statistics, David Freedman

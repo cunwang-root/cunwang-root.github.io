@@ -2,7 +2,7 @@
 layout: post
 title:  "expert python programming"
 date:   2017-12-23
-categories: [LANGUAGES]
+categories: [Languages]
 mathjax: true
 ---
 ## Current Status of Python
