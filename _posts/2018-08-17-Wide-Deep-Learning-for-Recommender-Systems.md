@@ -2,7 +2,7 @@
 layout: post
 title:  "Wide & Deep Learning for Recommender Systems"
 date:   2018-08-17
-categories: [MachineLearning]
+categories: [Machinelearning]
 tags: [paper, deep learning, recommender system]
 ---
 
