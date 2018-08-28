@@ -54,13 +54,18 @@ The wide component is a generalized linear model.
 The deep component is a feed-forward neural network.
 
 *Joint Training of Wide & Deep Model*
+
 The wide component and deep component are combined using a weighted sum of
 their output log odds as the prediction, which is then fed to one common
 logistic loss function for joint training.
 
 The implementation of the model is available in 
-[here][https://github.com/tensorflow/models/tree/master/official/wide_deep].
+[here](https://github.com/tensorflow/models/tree/master/official/wide_deep).
 
-According to the author, the wide and deep model truly shines on larger data
+According to the experiments above, the wide and deep model truly shines on larger data
 sets with high-cardinality features, where each feature has millions/billions of
 unique possible values (which is the specialty of the wide model).
+
+Blog from the author is available in [here](https://ai.googleblog.com/2016/06/wide-deep-learning-better-together-with.html)
+
+Official tutorial is [here](https://www.tensorflow.org/tutorials/representation/linear)
