@@ -87,4 +87,66 @@ class Uncopyable
         Uncopyable& operator=(const Uncopyable&);
 };
 ```
-}
+
+## Item 7: Declare destructors virtual in polymorphic base classes
+
+C++ specifies that when a derived class object is deleted through a pointer 
+to a base class with a non-virtual destructor, results are undefined. 
+What typically happens at runtime is that the derived part of the object is
+never destroyed.
+
+Eliminating the problem is simple: give the base class a virtual destructor.
+Then deleting a derived class object will do exactly what you want.
+
+When a class is not intended to be a base class, making the destructor
+virtual is usually a bad idea.
+
+The implementation of virtual functions requires that objects carry
+information that can be used at runtime
+to determine which virtual functions should be invoked on the object. This
+information typically takes the
+form of a pointer called a vptr ("virtual table pointer"). 
+
+Declare a virtual destructor in a class if and only if that class contains
+at least one virtual function
+
+If you're ever tempted to inherit from a standard container or any other
+class with a non-virtual destructor, resist the temptation! 
+
+Classes not designed to be base classes or not designed to be used
+polymorphically should not declare virtual destructors.
+
+## Item 8: Prevent exceptions from leaving destructors
+Destructors should never emit exceptions. If functions called in a destructor
+may throw, the destructor should catch any exceptions, then swallow them or
+terminate the program.
+
+If class clients need to be able to react to exceptions thrown during an
+operation, the class should provide a regular (i.e., non-destructor) function
+that performs the operation.
+
+If an operation may fail by throwing an exception and there may be a need to
+handle that exception, the exception has to come from some non-destructor
+function.
+
+## Item 9: Never call virtual functions during construction or destruction
+During base class construction of a derived class object, the
+type of the object is that of the base class. Not only do virtual functions
+resolve to the base class, but the parts of the language using runtime
+type information treat the object as a base class type. 
+
+The same reasoning applies during destruction. Once a derived class
+destructor has run, the object's
+derived class data members assume undefined values, so C++ treats them
+as if they no longer exist.
+Upon entry to the base class destructor, the object becomes a base class
+object, and all parts of C++ virtual functions, dynamic_casts, etc.,
+treat it that way.
+
+Since you can't use virtual functions to call down from base classes during
+construction, you can compensate by having derived classes pass necessary
+construction information up to base class constructors instead. 
+
+## Item 10: Have assignment operators return a reference to \*this
+
+## Item 11: Handle assignment to self in operator=
