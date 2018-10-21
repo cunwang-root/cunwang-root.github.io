@@ -32,12 +32,12 @@ is called a Markov assumption.
 How do we estimate these bigram or N-gram probabilities? An intuitive way to
 estimate probabilities is called __maximum likelihood estimation__ or __MLE__.
 $$
-\begin{align}
-    \begin{split}
-        P(w_n|w_{n-1}) &= \frac{C(w_{n-1}w_n)}{\sum_wC(w_{n-1}w)} \\
-                       &= \frac{C(w_{n-1}(n))}{C(w_{n-1})} 
-    \end{split}
-\end{align}
+\\begin{equation}
+\\begin{split}
+        P(w_n|w_{n-1}) &= \\frac{C(w_{n-1}w_n)}{\\sum_wC(w_{n-1}w)} \\\\
+                       &= \\frac{C(w_{n-1}(n))}{C(w_{n-1})} 
+\\end{split}
+\\end{equation}
 $$
                   
 
