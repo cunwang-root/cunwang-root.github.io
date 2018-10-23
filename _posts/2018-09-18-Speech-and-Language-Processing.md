@@ -61,10 +61,8 @@ set is the inverse probability of the test set, normalized by the number of
 words. For a test set $W = w_1w_2 \ldots w_N$,:
 $$
 \begin{equation}
-\begin{split}
     PP(W) &= P(w_1w_2 \ldots w_n)^{-\frac{1}{N}} \\
           &= \sqrt[N]{\frac{1}{P(w_1w_2 \ldots w_N)}}
-\end{split}
 \end{equation}
 $$
                   
