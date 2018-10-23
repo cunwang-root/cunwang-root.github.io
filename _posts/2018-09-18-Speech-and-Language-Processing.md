@@ -139,3 +139,12 @@ order N-grams.
 This kind of backoff with discounting is also called Katz backoff.
 
 ### 4.5 Kneser-Ney Smoothing
+__Absolute discounting__ subtracts a  fixed (absolute) discount d from each
+count.
+$$
+\begin{align}
+    P_{\text{AbsoluteDiscounting}}(w_i|w_{i-1}) =
+                    \frac{C(w_{i-1}w_i)-d}{\sum_vC(w_{i-1}v)} +
+                    \lambda (w_{i-1})P(w_i)
+\end{align}
+$$
