@@ -61,8 +61,8 @@ set is the inverse probability of the test set, normalized by the number of
 words. For a test set $W = w_1w_2 \ldots w_N$,:
 $$
 \begin{align}
-    PP(W) &= P(w_1w_2 \ldots w_n)^{-\frac{1}{N}} \\
-          &= \sqrt[N]{\frac{1}{P(w_1w_2 \ldots w_N)}}
+    PP(W) = P(w_1w_2 \ldots w_n)^{-\frac{1}{N}}
+          = \sqrt[N]{\frac{1}{P(w_1w_2 \ldots w_N)}}
 \end{align}
 $$
                   
@@ -148,3 +148,24 @@ $$
                     \lambda (w_{i-1})P(w_i)
 \end{align}
 $$
+
+__Kneser-Ney discounting__ augments absolute discounting with a more
+sophisticated way to handle the lower-order unigram distribution.
+
+Instead of $P(w)$, which answers the question "How likely is $w$?", we'd like to
+create a unigram model that we might call $P\_{\text{CONTINUATION}}$, which
+answers the question "How likely is $w$ to appear as a novel continuation?". 
+
+The Kneser-Ney intuition is to base our estimate of $P\_{\text{CONTINUATION}}$
+on the number of different contexts word $w$ has appeared in, that is, the number
+of bigram types it completes. We hypothesize that words that have appeared in
+more contexts in the past are more likely to appear in some new context as well.
+
+### 4.6 The Web and Stupid Backoff
+with very large language models a much simpler algorithm may be sufficient.
+The algorithm is called __stupid backoff__.
+
+Stupid backoff gives up the idea of trying to make the language
+model a true probability distribution. There is no discounting of the
+higher-order probabilities. If a higher-order N-gram has a zero count, we simply
+backoff to a lower order N-gram, weighed by a fixed (context-independent) weight.
